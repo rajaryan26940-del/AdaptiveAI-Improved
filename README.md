@@ -1,18 +1,14 @@
 # AdaptiveAI — Self-Learning Autonomous Agent Framework
 
-AdaptiveAI is a Python-based autonomous agent framework that executes tasks, evaluates execution results, stores episodic memories, and adapts its strategy selection using machine learning and contextual multi-armed bandit techniques.
-
-The project includes a web dashboard for task execution, learning analytics, episodic memory, semantic knowledge lookup, and ML model retraining.
+AdaptiveAI is a self-learning autonomous agent system built in Python. It features episodic memory storage, self-evaluating execution rewards, dynamic strategy selection (balancing exploration and exploitation using ML models and contextual multi-armed bandit strategies), and an interactive web interface.
 
 ## Features
 
-- **Autonomous Task Execution:** Supports Python code execution, mathematical calculations, web search, and data-processing tasks.
-- **Episodic Memory:** Stores task execution experiences and associated performance metrics.
-- **Reward-Based Evaluation:** Evaluates task outcomes using composite reward scores.
-- **Adaptive Strategy Selection:** Combines ML-based strategy prediction with contextual multi-armed bandit selection.
-- **Interactive Dashboard:** Provides task execution, learning analytics, episodic memory, and semantic knowledge views.
-- **ML Model Retraining:** Supports retraining the strategy prediction model using stored experiences.
-- **Automated Tests:** Includes unit and integration tests for core functionality and regression prevention.
+- **Autonomous Agent Execution Engine:** Executes tasks across code execution, web search, mathematical calculations, and data processing.
+- **Episodic Memory & Reward System:** Logs execution metrics, execution time, and evaluates composite reward scores for continuous reinforcement learning.
+- **ML Strategy Predictor:** Dynamically retrains machine learning models to choose the optimal reasoning and execution strategy per domain category.
+- **Web UI & REST API:** Interactive dashboard built with HTML5, CSS3, and JavaScript, powered by a Python backend server.
+- **Automated Benchmarking:** Built-in benchmark suite to demonstrate learning progression over sequential task batches.
 
 ## Tech Stack
 
@@ -22,7 +18,7 @@ The project includes a web dashboard for task execution, learning analytics, epi
 - **Data Storage:** SQLite
 - **Testing:** pytest
 
-## Project Structure
+## Directory Structure
 
 ```text
 ├── backend/
@@ -53,39 +49,33 @@ The project includes a web dashboard for task execution, learning analytics, epi
 - Python 3.8 or later
 - Git
 
-### 1. Clone the repository
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/rajaryan26940-del/AdaptiveAI-Improved.git
+   cd AdaptiveAI-Improved
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   python -m pip install pytest
+   ```
+
+### Running the Demonstration
+
+To run the self-learning agent benchmark:
 
 ```bash
-git clone https://github.com/rajaryan26940-del/AdaptiveAI-Improved.git
-cd AdaptiveAI-Improved
+python run_demo.py
 ```
 
-### 2. Create and activate a virtual environment
+### Running the Web Server & UI
 
-**Windows PowerShell:**
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-```
-
-**macOS/Linux:**
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
-python -m pip install -r requirements.txt
-python -m pip install pytest
-```
-
-### 4. Run the application
-
-Start the backend server from the project root:
+Start the backend API server from the project root:
 
 ```bash
 python -m backend.app
@@ -93,44 +83,21 @@ python -m backend.app
 
 Open the local address shown in the terminal, typically `http://127.0.0.1:8000/`, to access the application.
 
-### 5. Run the demonstration
-
-```bash
-python run_demo.py
-```
-
-### 6. Run the tests
-
-```bash
-python -m pytest tests/test_adaptive_agent.py -v
-```
-
-The current test suite contains **5 passing tests** in the tested local environment.
-
 ## Improvements and Testing
 
 This version includes targeted fixes and regression testing:
 
 - Corrected the dashboard's ML accuracy display so an untrained model is not shown with a fabricated default accuracy.
-- Fixed repeated bandit reward accumulation during model retraining by rebuilding the statistics from stored episodes.
+- Fixed repeated bandit reward accumulation during model retraining by rebuilding statistics from stored episodes.
 - Updated strategy score labels to display selection scores rather than presenting unnormalized values as probabilities.
-- Added a regression test to verify that repeated retraining does not double-count stored bandit rewards.
+- Added a regression test verifying that repeated retraining does not double-count stored bandit rewards.
 
-These changes were tested using pytest; all five tests passed in the local development environment.
+**Latest local test result:** 5 tests passed.
 
 ## Screenshots
 
-The dashboard provides views for task execution, learning analytics, episodic memory, and semantic knowledge. Screenshots are included below.
-
-<!-- Keep your existing four GitHub screenshot image links here. -->
-
-## Future Improvements
-
-- Expand automated test coverage.
-- Improve evaluation across a wider variety of tasks.
-- Add more detailed learning and strategy-selection analytics.
-- Improve documentation for configuration and deployment.
+The dashboard screenshots can be added below. If you still have the original screenshot image links, preserve them here.
 
 ## License
 
-This project currently declares the MIT License. Ensure the license and attribution are consistent with the permissions and licensing terms of the original project before distributing modified versions.
+MIT License. Ensure the license and attribution comply with the original project's permissions before distributing modified versions.
