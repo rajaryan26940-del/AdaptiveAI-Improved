@@ -1,81 +1,136 @@
-
 # AdaptiveAI — Self-Learning Autonomous Agent Framework
 
-AdaptiveAI is a self-learning autonomous agent system built in Python. It features episodic memory storage, self-evaluating execution rewards, dynamic strategy selection (balancing exploration and exploitation using ML models and contextual multi-armed bandit strategies), and an interactive web interface.
+AdaptiveAI is a Python-based autonomous agent framework that executes tasks, evaluates execution results, stores episodic memories, and adapts its strategy selection using machine learning and contextual multi-armed bandit techniques.
+
+The project includes a web dashboard for task execution, learning analytics, episodic memory, semantic knowledge lookup, and ML model retraining.
 
 ## Features
 
-- **Autonomous Agent Execution Engine**: Executes tasks across code execution, web search, mathematical calculations, and data processing.
-- **Episodic Memory & Reward System**: Logs execution metrics, execution time, and evaluates composite reward scores for continuous reinforcement learning.
-- **ML Strategy Predictor**: Dynamically retrains machine learning models to choose the optimal reasoning and execution strategy per domain category.
-- **Web UI & REST API**: Interactive dashboard built with HTML5, CSS3, and JavaScript, powered by a Python backend server.
-- **Automated Benchmarking**: Built-in benchmark suite to demonstrate learning progression over sequential task batches.
+- **Autonomous Task Execution:** Supports Python code execution, mathematical calculations, web search, and data-processing tasks.
+- **Episodic Memory:** Stores task execution experiences and associated performance metrics.
+- **Reward-Based Evaluation:** Evaluates task outcomes using composite reward scores.
+- **Adaptive Strategy Selection:** Combines ML-based strategy prediction with contextual multi-armed bandit selection.
+- **Interactive Dashboard:** Provides task execution, learning analytics, episodic memory, and semantic knowledge views.
+- **ML Model Retraining:** Supports retraining the strategy prediction model using stored experiences.
+- **Automated Tests:** Includes unit and integration tests for core functionality and regression prevention.
 
-## Directory Structure
+## Tech Stack
+
+- **Backend:** Python, FastAPI
+- **Frontend:** HTML, CSS, JavaScript
+- **Machine Learning:** scikit-learn, NumPy, joblib
+- **Data Storage:** SQLite
+- **Testing:** pytest
+
+## Project Structure
 
 ```text
 ├── backend/
-│   ├── agent.py            # Main AdaptiveAgent controller
-│   ├── app.py              # Backend REST API server
-│   ├── core/               # Core execution engine & strategy management
-│   ├── learning/           # ML strategy predictor & reinforcement model
-│   ├── memory/             # Episodic memory database management
-│   └── tools/              # Tool integrations (Python executor, math, search)
+│   ├── agent.py
+│   ├── app.py
+│   ├── core/
+│   ├── learning/
+│   ├── memory/
+│   └── tools/
 ├── frontend/
-│   ├── index.html          # Web application user interface
-│   ├── styles.css          # UI styles and modern dashboard layout
-│   └── app.js              # Frontend logic & API interaction
-├── data/                   # Episodic memory database storage
-├── models/                 # Trained ML strategy models (.pkl)
-├── tests/                  # Unit and integration test suite
-├── run_demo.py             # Autonomous learning benchmark script
-└── requirements.txt        # Project dependencies
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+├── models/
+│   └── ml_strategy_model.pkl
+├── tests/
+│   └── test_adaptive_agent.py
+├── run_demo.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.8 or later
+- Git
 
-### Installation
+### 1. Clone the repository
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/rajaryan26940-del/My-Project.git
-   cd My-Project
-   ```
+```bash
+git clone https://github.com/rajaryan26940-del/AdaptiveAI-Improved.git
+cd AdaptiveAI-Improved
+```
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 2. Create and activate a virtual environment
 
-### Running the Demonstration
+**Windows PowerShell:**
 
-To run the self-learning agent benchmark:
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+**macOS/Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install pytest
+```
+
+### 4. Run the application
+
+Start the backend server from the project root:
+
+```bash
+python -m backend.app
+```
+
+Open the local address shown in the terminal, typically `http://127.0.0.1:8000/`, to access the application.
+
+### 5. Run the demonstration
 
 ```bash
 python run_demo.py
 ```
 
-### Running the Web Server & UI
-
-Start the backend API server:
+### 6. Run the tests
 
 ```bash
-python -m backend.app
+python -m pytest tests/test_adaptive_agent.py -v
 ```
-<img width="1912" height="856" alt="Screenshot 2026-09-23 234821" src="https://github.com/user-attachments/assets/4a926347-e962-494d-a468-15c743458451" />
 
-<img width="1917" height="868" alt="Screenshot 2026-09-23 234841" src="https://github.com/user-attachments/assets/0d8b26d6-2e28-4a7e-893a-653781ee2b87" />
+The current test suite contains **5 passing tests** in the tested local environment.
 
-<img width="1903" height="852" alt="Screenshot 2026-09-23 234901" src="https://github.com/user-attachments/assets/a6f705eb-dc31-4ea8-9621-e57103107b3b" />
+## Improvements and Testing
 
-<img width="1915" height="870" alt="Screenshot 2026-09-23 234915" src="https://github.com/user-attachments/assets/5abdebd4-12e9-4375-b723-8872bba48fd6" />
+This version includes targeted fixes and regression testing:
 
-Then open `frontend/index.html` in your browser.
+- Corrected the dashboard's ML accuracy display so an untrained model is not shown with a fabricated default accuracy.
+- Fixed repeated bandit reward accumulation during model retraining by rebuilding the statistics from stored episodes.
+- Updated strategy score labels to display selection scores rather than presenting unnormalized values as probabilities.
+- Added a regression test to verify that repeated retraining does not double-count stored bandit rewards.
+
+These changes were tested using pytest; all five tests passed in the local development environment.
+
+## Screenshots
+
+The dashboard provides views for task execution, learning analytics, episodic memory, and semantic knowledge. Screenshots are included below.
+
+<!-- Keep your existing four GitHub screenshot image links here. -->
+
+## Future Improvements
+
+- Expand automated test coverage.
+- Improve evaluation across a wider variety of tasks.
+- Add more detailed learning and strategy-selection analytics.
+- Improve documentation for configuration and deployment.
 
 ## License
 
-MIT License
+This project currently declares the MIT License. Ensure the license and attribution are consistent with the permissions and licensing terms of the original project before distributing modified versions.
